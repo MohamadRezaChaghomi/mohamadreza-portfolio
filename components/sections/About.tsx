@@ -50,7 +50,7 @@ export default function About({ language }: AboutProps) {
             className="md:w-1/3"
           >
             <div className="aspect-square rounded-2xl glass overflow-hidden">
-              {/* <Image src="/images/profile/mohamadreza.jpg" alt="محمدرضا چاقمی" fill className="object-cover" /> */}
+              { <Image src="/images/profile/mohamadreza.jpg" alt="محمدرضا چاقمی" fill className="object-cover" /> }
               <div className="w-full h-full flex items-center justify-center text-[rgb(var(--text-secondary))]">
                 {language === 'fa' ? 'عکس پروفایل' : 'Profile Photo'}
               </div>
