@@ -1,31 +1,23 @@
-import { NextIntlClientProvider } from 'next-intl';
-import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
-export function generateStaticParams() {
-  return [{ lang: 'fa' }, { lang: 'en' }];
-}
-
-export default async function LocaleLayout({
-  children,
-  params
-}: {
-  children: React.ReactNode;
-  params: { lang: string };
-}) {
-  let messages;
-  try {
-    messages = (await import(`../../../messages/${params.lang}.json`)).default;
-  } catch (error) {
-    notFound();
-  }
-
-  return (
-    <html lang={params.lang} dir={params.lang === 'fa' ? 'rtl' : 'ltr'}>
-      <body>
-        <NextIntlClientProvider locale={params.lang} messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
-}
+export const metadata: Metadata = {
+  title: 'محمدرضا چاقمی - توسعه‌دهنده فرانت‌اند',
+  description: 'پورتفولیوی محمدرضا چاقمی، توسعه‌دهنده فرانت‌اند با تخصص در React و Next.js',
+  keywords: 'فرانت‌اند, React, Next.js, توسعه‌دهنده, پورتفولیو',
+  authors: [{ name: 'محمدرضا چاقمی' }],
+  openGraph: {
+    title: 'محمدرضا چاقمی - توسعه‌دهنده فرانت‌اند',
+    description: 'پورتفولیوی محمدرضا چاقمی',
+    url: 'https://your-domain.com',
+    siteName: 'MRCh Portfolio',
+    images: [
+      {
+        url: '/images/profile/mohamadreza.jpg',
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'fa_IR',
+    type: 'website',
+  },
+};
