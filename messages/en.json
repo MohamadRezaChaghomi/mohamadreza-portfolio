@@ -1,0 +1,23 @@
+{
+  "Home": "Home",
+  "Projects": "Projects",
+  "About": "About",
+  "Contact": "Contact",
+  "Hero": {
+    "title": "Mohammad Reza Chaghomi",
+    "subtitle": "Front-end Developer",
+    "description": "Computer Engineering student passionate about creating beautiful and professional user experiences"
+  },
+  "ProjectsTitle": "Projects",
+  "SkillsTitle": "Skills",
+  "AboutTitle": "About Me",
+  "ContactTitle": "Contact Me",
+  "ContactInfo": "Contact Information",
+  "SendMessage": "Send Message",
+  "NamePlaceholder": "Full Name",
+  "EmailPlaceholder": "Email",
+  "MessagePlaceholder": "Your Message",
+  "SendButton": "Send Message",
+  "DownloadResume": "Download Resume",
+  "Footer": "All rights reserved"
+}

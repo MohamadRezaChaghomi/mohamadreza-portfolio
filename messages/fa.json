@@ -1,0 +1,23 @@
+{
+  "Home": "خانه",
+  "Projects": "پروژه‌ها",
+  "About": "درباره من",
+  "Contact": "تماس",
+  "Hero": {
+    "title": "محمدرضا چاقمی",
+    "subtitle": "توسعه‌دهنده فرانت‌اند",
+    "description": "دانشجوی مهندسی کامپیوتر با علاقه به ساخت تجربه‌های کاربری زیبا و حرفه‌ای"
+  },
+  "ProjectsTitle": "پروژه‌ها",
+  "SkillsTitle": "مهارت‌ها",
+  "AboutTitle": "درباره من",
+  "ContactTitle": "تماس با من",
+  "ContactInfo": "اطلاعات تماس",
+  "SendMessage": "ارسال پیام",
+  "NamePlaceholder": "نام و نام خانوادگی",
+  "EmailPlaceholder": "ایمیل",
+  "MessagePlaceholder": "پیام شما",
+  "SendButton": "ارسال پیام",
+  "DownloadResume": "دانلود رزومه",
+  "Footer": "تمامی حقوق محفوظ است"
+}
