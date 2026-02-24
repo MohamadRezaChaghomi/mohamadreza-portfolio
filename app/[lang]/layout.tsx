@@ -1,7 +1,10 @@
+import { use } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import SmoothScroll from '@/components/SmoothScroll';
 import type { Metadata } from 'next';
+import enMessages from '@/messages/en.json';
+import faMessages from '@/messages/fa.json';
 
 export const metadata: Metadata = {
   title: 'محمدرضا چاقمی - توسعه‌دهنده فرانت‌اند',
@@ -29,18 +32,15 @@ export function generateStaticParams() {
   return [{ lang: 'fa' }, { lang: 'en' }];
 }
 
-import enMessages from '@/messages/en.json';
-import faMessages from '@/messages/fa.json';
-
-export default async function LocaleLayout({
+export default function LocaleLayout({
   children,
   params
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
-  // In Next.js App Router, params is always sync in layout/page, so no need for await
-  const lang = params.lang;
+  // Use React.use() to unwrap Promise<params> in Next.js 16+
+  const { lang } = use(params);
   const messages = lang === 'fa' ? faMessages : enMessages;
 
   return (
