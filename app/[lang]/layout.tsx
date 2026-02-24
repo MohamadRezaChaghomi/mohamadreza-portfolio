@@ -32,15 +32,14 @@ export function generateStaticParams() {
   return [{ lang: 'fa' }, { lang: 'en' }];
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params
 }: {
   children: React.ReactNode;
   params: Promise<{ lang: string }>;
 }) {
-  // Use React.use() to unwrap Promise<params> in Next.js 16+
-  const { lang } = use(params);
+  const { lang } = await params;
   const messages = lang === 'fa' ? faMessages : enMessages;
 
   return (
