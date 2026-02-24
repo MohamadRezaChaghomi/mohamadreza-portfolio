@@ -29,19 +29,17 @@ export function generateStaticParams() {
   return [{ lang: 'fa' }, { lang: 'en' }];
 }
 
-export default async function LocaleLayout({
+import enMessages from '@/messages/en.json';
+import faMessages from '@/messages/fa.json';
+
+export default function LocaleLayout({
   children,
   params
 }: {
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  let messages;
-  try {
-    messages = (await import(`../../../messages/${params.lang}.json`)).default;
-  } catch (error) {
-    notFound();
-  }
+  const messages = params.lang === 'fa' ? faMessages : enMessages;
 
   return (
     <html lang={params.lang} dir={params.lang === 'fa' ? 'rtl' : 'ltr'}>
