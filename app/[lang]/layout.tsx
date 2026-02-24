@@ -32,19 +32,21 @@ export function generateStaticParams() {
 import enMessages from '@/messages/en.json';
 import faMessages from '@/messages/fa.json';
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params
 }: {
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  const messages = params.lang === 'fa' ? faMessages : enMessages;
+  // In Next.js App Router, params is always sync in layout/page, so no need for await
+  const lang = params.lang;
+  const messages = lang === 'fa' ? faMessages : enMessages;
 
   return (
-    <html lang={params.lang} dir={params.lang === 'fa' ? 'rtl' : 'ltr'}>
+    <html lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
       <body>
-        <NextIntlClientProvider locale={params.lang} messages={messages}>
+        <NextIntlClientProvider locale={lang} messages={messages}>
           <SmoothScroll>
             {children}
           </SmoothScroll>
