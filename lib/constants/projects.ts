@@ -19,6 +19,7 @@ export interface Project {
   };
   githubUrl: string;
   imageUrl: string;
+  videoUrl?: string; // آدرس ویدیو (اختیاری)
   category: 'fullstack' | 'frontend' | 'team';
   role: {
     fa: string;
@@ -68,6 +69,7 @@ export const projects: Project[] = [
     },
     githubUrl: 'https://github.com/MohamadRezaChaghomi/note-app',
     imageUrl: '/images/projects/note-app/cover.jpg',
+    videoUrl: '/images/projects/note-app/demo.mp4',
     category: 'fullstack',
     role: {
       fa: 'توسعه‌دهنده فول‌استک (انفرادی)',
@@ -113,6 +115,7 @@ export const projects: Project[] = [
     },
     githubUrl: 'https://github.com/MohamadRezaChaghomi/real-estate',
     imageUrl: '/images/projects/real-estate/cover.jpg',
+    videoUrl: '/images/projects/real-estate/demo.mp4',
     category: 'fullstack',
     role: {
       fa: 'توسعه‌دهنده فول‌استک (انفرادی)',

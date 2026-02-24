@@ -2,31 +2,37 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useParams } from 'next/navigation';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const navItems = [
-  { href: '/', label: { fa: 'خانه', en: 'Home' } },
-  { href: '/projects', label: { fa: 'پروژه‌ها', en: 'Projects' } },
-  { href: '/about', label: { fa: 'درباره من', en: 'About' } },
-  { href: '/contact', label: { fa: 'تماس', en: 'Contact' } },
-];
+import { useTranslations } from 'next-intl';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const params = useParams();
+  const lang = params.lang as string || 'fa';
   const { theme, setTheme } = useTheme();
-  const [language, setLanguage] = useState<'fa' | 'en'>('fa');
+  const t = useTranslations();
 
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
 
+  const navItems = [
+    { href: `/${lang}`, key: 'nav.home' },
+    { href: `/${lang}/projects`, key: 'nav.projects' },
+    { href: `/${lang}/about`, key: 'nav.about' },
+    { href: `/${lang}/contact`, key: 'nav.contact' },
+  ];
+
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'fa' ? 'en' : 'fa');
+    const newLang = lang === 'fa' ? 'en' : 'fa';
+    // تغییر مسیر با زبان جدید
+    const newPath = pathname.replace(`/${lang}`, `/${newLang}`);
+    window.location.href = newPath;
   };
 
   return (
@@ -34,7 +40,7 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* لوگو */}
-          <Link href="/" className="text-2xl font-bold">
+          <Link href={`/${lang}`} className="text-2xl font-bold">
             <span className="text-[rgb(var(--accent-primary))]">MR</span>
             <span className="text-[rgb(var(--text-primary))]">Ch</span>
           </Link>
@@ -49,7 +55,7 @@ export default function Header() {
                   pathname === item.href ? 'text-[rgb(var(--accent-primary))] font-medium' : ''
                 }`}
               >
-                {item.label[language]}
+                {t(item.key)}
               </Link>
             ))}
           </div>
@@ -70,7 +76,7 @@ export default function Header() {
               onClick={toggleLanguage}
               className="px-3 py-1 rounded-full border border-[rgb(var(--accent-primary))] text-[rgb(var(--accent-primary))] hover:bg-[rgb(var(--accent-primary))] hover:text-white transition-colors"
             >
-              {language === 'fa' ? 'EN' : 'FA'}
+              {lang === 'fa' ? 'EN' : 'FA'}
             </button>
 
             {/* دکمه منوی موبایل */}
@@ -103,7 +109,7 @@ export default function Header() {
                       pathname === item.href ? 'text-[rgb(var(--accent-primary))] font-medium' : ''
                     }`}
                   >
-                    {item.label[language]}
+                    {t(item.key)}
                   </Link>
                 ))}
               </div>
