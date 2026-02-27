@@ -148,7 +148,7 @@ export default function Contact({ language }) {
 
               <div className="form-group">
                 <label htmlFor="email" className="form-label">
-                  Email
+                  {language === 'fa' ? 'ایمیل' : 'Email'}
                 </label>
                 <input
                   id="email"

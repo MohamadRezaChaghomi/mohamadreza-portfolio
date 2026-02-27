@@ -67,8 +67,8 @@ body {
 /* استایل‌های شیشه‌ای (Glassmorphism) */
 .glass {
   background: rgba(var(--glass-bg));
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(var(--glass-border));
   border-radius: 1rem;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
@@ -76,16 +76,16 @@ body {
 
 .glass-sm {
   background: rgba(var(--glass-bg));
-  backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   border: 1px solid rgba(var(--glass-border));
   border-radius: 0.75rem;
 }
 
 .neon-glass {
   background: rgba(var(--glass-bg));
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(var(--accent-primary), 0.3);
   border-radius: 1rem;
   box-shadow: 
@@ -306,5 +306,7 @@ section {
 }
 
 .text-balance {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   text-wrap: balance;
 }

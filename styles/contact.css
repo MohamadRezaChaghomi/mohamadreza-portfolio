@@ -95,6 +95,13 @@
   line-height: 1.6;
 }
 
+/* when an item contains LTR text (like phone numbers) avoid expanding and
+   stick it next to the icon; also align text left so it doesn't center
+   within the flex container */
+.contact-info-text[dir="ltr"] {
+  flex-grow: 0;
+  text-align: left;
+}
 .contact-info-link {
   color: rgb(var(--accent-primary));
   text-decoration: none;

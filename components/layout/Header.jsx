@@ -45,7 +45,11 @@ export default function Header() {
       <div className="header-container">
         {/* لوگو */}
         <Link href={`/${lang}`} className="header-logo">
-          <span>MR</span><span>Ch</span>
+          {lang === 'fa' ? (
+            <><span>Ch</span><span>MR</span></>
+          ) : (
+            <><span>MR</span><span>Ch</span></>
+          )}
         </Link>
 
         {/* منوی دسکتاپ */}

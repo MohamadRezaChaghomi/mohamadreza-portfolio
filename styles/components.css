@@ -83,6 +83,12 @@
   position: relative;
   transition: color 0.3s ease;
   white-space: nowrap;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.nav-link:not(.active):hover {
+  background: rgba(var(--accent-primary), 0.05);
 }
 
 .nav-link::after {
