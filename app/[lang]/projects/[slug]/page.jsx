@@ -1,66 +1,133 @@
 import { projects } from '@/lib/constants/projects';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import { Github } from 'lucide-react';
+import Link from 'next/link';
+import { Github, ExternalLink, ArrowLeft } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
-export default function ProjectDetailPage({ params }) {
-  const project = projects.find(p => p.id === params.slug);
+export default async function ProjectDetailPage({ params }) {
+  const { lang, slug } = await params;
+  const project = projects.find(p => p.id === slug);
+  
   if (!project) notFound();
 
   return (
-    <div className="min-h-screen pt-20">
-      <div className="container mx-auto px-4 py-12">
-        {/* تصویر اصلی */}
-        <div className="relative h-96 rounded-2xl overflow-hidden mb-8">
-          <Image
+    <section className="project-detail-section">
+      <div className="project-detail-container">
+        {/* Breadcrumb */}
+        <div className="breadcrumb-nav mb-8">
+          <Link href={`/${lang}`} className="breadcrumb-item hover:text-[rgb(var(--accent-primary))]">
+            {lang === 'fa' ? 'خانه' : 'Home'}
+          </Link>
+          <span className="breadcrumb-separator">/</span>
+          <Link href={`/${lang}#projects`} className="breadcrumb-item hover:text-[rgb(var(--accent-primary))]">
+            {lang === 'fa' ? 'پروژه‌ها' : 'Projects'}
+          </Link>
+          <span className="breadcrumb-separator">/</span>
+          <span>{project.title[lang]}</span>
+        </div>
+
+        {/* Hero Image */}
+        <div className="project-detail-image mb-12">
+          <img
             src={project.imageUrl}
-            alt={project.title[params.lang]}
-            fill
-            className="object-cover"
+            alt={project.title[lang]}
+            className="w-full h-full object-cover"
           />
         </div>
 
-        {/* عنوان و توضیحات */}
-        <h1 className="text-4xl font-bold mb-4">
-          {project.title[params.lang]}
-        </h1>
-        <p className="text-xl text-[rgb(var(--text-secondary))] mb-8">
-          {project.description[params.lang]}
-        </p>
+        {/* Header with Title and Meta */}
+        <div className="mb-12">
+          <h1 className="project-detail-title">
+            {project.title[lang]}
+          </h1>
+          <p className="project-detail-description">
+            {project.longDescription?.[lang] || project.description[lang]}
+          </p>
 
-        {/* تکنولوژی‌ها */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">تکنولوژی‌ها</h2>
-          <div className="flex flex-wrap gap-3">
+          {/* Meta Information */}
+          <div className="project-detail-meta">
+            <div className="project-meta-card">
+              <div className="project-meta-label">
+                {lang === 'fa' ? 'دسته‌بندی' : 'Category'}
+              </div>
+              <div className="project-meta-value text-base">
+                {project.category || (lang === 'fa' ? 'پروژه' : 'Project')}
+              </div>
+            </div>
+            <div className="project-meta-card">
+              <div className="project-meta-label">
+                {lang === 'fa' ? 'نقش' : 'Role'}
+              </div>
+              <div className="project-meta-value text-base">
+                {project.role?.[lang] || (lang === 'fa' ? 'توسعه‌دهنده' : 'Developer')}
+              </div>
+            </div>
+            <div className="project-meta-card">
+              <div className="project-meta-label">
+                {lang === 'fa' ? 'دستاورد' : 'Achievement'}
+              </div>
+              <div className="project-meta-value text-base">
+                {project.achievement?.[lang] || (lang === 'fa' ? 'موفق' : 'Successful')}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Technologies Section */}
+        <div className="tech-stack-section">
+          <h2 className="project-detail-section-title">
+            {lang === 'fa' ? 'تکنولوژی‌ها' : 'Technologies'}
+          </h2>
+          <div className="tech-stack">
             {project.technologies.map(tech => (
-              <span key={tech} className="px-4 py-2 glass rounded-full">
+              <span key={tech} className="tech-item-badge">
                 {tech}
               </span>
             ))}
           </div>
         </div>
 
-        {/* ویژگی‌ها */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">ویژگی‌ها</h2>
-          <ul className="list-disc list-inside space-y-2">
-            {project.features[params.lang].map((feature, idx) => (
-              <li key={idx}>{feature}</li>
-            ))}
-          </ul>
-        </div>
+        {/* Features Section */}
+        {project.features?.[lang] && (
+          <div className="features-section">
+            <h2 className="project-detail-section-title">
+              {lang === 'fa' ? 'ویژگی‌ها' : 'Features'}
+            </h2>
+            <div className="features-list">
+              {project.features[lang].map((feature, idx) => (
+                <div key={idx} className="feature-item">
+                  <CheckCircle2 className="feature-icon" size={20} />
+                  <p className="feature-text">
+                    {feature}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
-        {/* لینک گیت‌هاب */}
-        <a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-[rgb(var(--accent-primary))] text-white rounded-xl hover:bg-opacity-90 transition-colors"
-        >
-          <Github size={20} />
-          GitHub
-        </a>
+        {/* Call-to-Action Links */}
+        <div className="project-links">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link-button project-link-github"
+            >
+              <Github size={20} />
+              {lang === 'fa' ? 'مشاهده روی GitHub' : 'View on GitHub'}
+            </a>
+          )}
+          <Link
+            href={`/${lang}#projects`}
+            className="project-link-button project-link-live"
+          >
+            <ArrowLeft size={20} />
+            {lang === 'fa' ? 'بازگشت به پروژه‌ها' : 'Back to Projects'}
+          </Link>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

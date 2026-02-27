@@ -28,18 +28,18 @@ const skills = [
 
 export default function Skills({ language }) {
   return (
-    <section className="py-20 px-4 bg-[rgb(var(--bg-secondary))]">
-      <div className="container mx-auto">
+    <section className="skills-section" id="skills">
+      <div className="skills-container">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
+          className="skills-heading section-heading"
         >
           {language === 'fa' ? 'مهارت‌ها' : 'Skills'}
         </motion.h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <div className="skills-grid">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
@@ -48,13 +48,13 @@ export default function Skills({ language }) {
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
               whileHover={{ y: -5, scale: 1.05 }}
-              className="glass p-6 flex flex-col items-center gap-3 cursor-pointer"
+              className="skill-card"
             >
               <skill.icon
-                className="w-12 h-12 transition-transform group-hover:scale-110"
+                className="skill-icon"
                 style={{ color: skill.color }}
               />
-              <span className="text-sm font-medium text-center">
+              <span className="skill-name">
                 {skill.name}
               </span>
             </motion.div>

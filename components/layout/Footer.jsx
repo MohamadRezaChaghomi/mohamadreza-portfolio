@@ -4,8 +4,8 @@ export default function Footer({ language }) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-6 px-4 border-t border-[rgb(var(--glass-border))]">
-      <div className="container mx-auto text-center text-[rgb(var(--text-secondary))]">
+    <footer className="footer">
+      <div className="footer-content">
         <p>
           © {currentYear}{' '}
           {language === 'fa'

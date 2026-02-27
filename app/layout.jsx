@@ -1,6 +1,13 @@
 import { Vazirmatn } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
+import "@/styles/hero.css";
+import "@/styles/skills.css";
+import "@/styles/projects.css";
+import "@/styles/about.css";
+import "@/styles/contact.css";
+import "@/styles/components.css";
+import "@/styles/project-detail.css";
 
 const vazir = Vazirmatn({
   variable: "--font-vazirmatn",
@@ -9,14 +16,19 @@ const vazir = Vazirmatn({
 });
 
 export const metadata = {
-  title: "محمدرضا چاقمی - توسعه‌دهنده فرانت‌اند",
+  title: "محمدرضا چاقمی - توسعه دهنده فرانت‌اند",
   description: "پورتفولیوی محمدرضا چاقمی، توسعه‌دهنده فرانت‌اند با تخصص در React و Next.js",
   keywords: "فرانت‌اند, React, Next.js, توسعه‌دهنده, پورتفولیو",
   authors: [{ name: "محمدرضا چاقمی" }],
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
+  metadataBase: new URL("https://mohamadreza-portfolio.vercel.app"),
   openGraph: {
     title: "محمدرضا چاقمی - توسعه‌دهنده فرانت‌اند",
     description: "پورتفولیوی محمدرضا چاقمی",
-    url: "https://your-domain.com",
+    url: "https://mohamadreza-portfolio.vercel.app",
     siteName: "MRCh Portfolio",
     images: [
       {

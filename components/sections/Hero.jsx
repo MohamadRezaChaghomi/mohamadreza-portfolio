@@ -8,30 +8,32 @@ import Background3D from '../three/Background3D';
 export default function Hero({ language }) {
 
   const scrollToNext = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
+    const element = document.getElementById('projects');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="hero-section">
       {/* پس‌زمینه سه‌بعدی */}
-      {/* <Background3D /> */}
+      <div className="hero-3d-background">
+        <Background3D />
+      </div>
 
       {/* محتوای اصلی */}
-      <div className="relative z-10 text-center px-4">
+      <div className="hero-content">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-4">
-            <span className="text-[rgb(var(--accent-primary))]">محمدرضا</span>
-            <span className="text-[rgb(var(--text-primary))]"> چاقمی</span>
+          <h1 className="hero-title">
+            <span className="hero-title-primary">محمدرضا</span>
+            <span className="hero-title-secondary"> چاقمی</span>
           </h1>
 
-          <div className="text-2xl md:text-3xl text-[rgb(var(--text-secondary))] mb-8">
+          <div className="hero-subtitle">
             {language === 'fa' ? (
               <TypeAnimation
                 sequence={[
@@ -67,45 +69,46 @@ export default function Hero({ language }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="max-w-2xl mx-auto text-lg text-[rgb(var(--text-secondary))] mb-12"
+            className="hero-description"
           >
             {language === 'fa'
-              ? 'دانشجوی مهندسی کامپیوتر با علاقه به ساخت تجربه‌های کاربری زیبا و حرفه‌ای'
-              : 'Computer Engineering student passionate about creating beautiful and professional user experiences'}
+              ? 'دانشجوی مهندسی کامپیوتر با علاقه به ساخت تجربه‌های کاربری زیبا و حرفه‌ای. متخصص در React، Next.js و طراحی رابط کاربری مدرن.'
+              : 'Computer Engineering student passionate about creating beautiful and professional user experiences. Specialized in React, Next.js and modern UI design.'}
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex items-center justify-center space-x-4 rtl:space-x-reverse"
+            className="hero-buttons"
           >
             <a
-              href="/projects"
-              className="px-8 py-3 bg-[rgb(var(--accent-primary))] text-white rounded-full hover:bg-[rgb(var(--accent-primary))]/90 transition-colors"
+              href="#projects"
+              className="hero-button-primary"
             >
               {language === 'fa' ? 'مشاهده پروژه‌ها' : 'View Projects'}
             </a>
+
+            {/* دکمه اسکرول به پایین بین دو دکمه */}
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+              onClick={scrollToNext}
+              className="hero-scroll-button"
+              aria-label="Scroll down"
+            >
+              <ArrowDown size={24} />
+            </motion.button>
+
             <a
-              href="/contact"
-              className="px-8 py-3 border border-[rgb(var(--accent-primary))] text-[rgb(var(--accent-primary))] rounded-full hover:bg-[rgb(var(--accent-primary))] hover:text-white transition-colors"
+              href="#contact"
+              className="hero-button-secondary"
             >
               {language === 'fa' ? 'تماس با من' : 'Contact Me'}
             </a>
           </motion.div>
         </motion.div>
-
-        {/* دکمه اسکرول به پایین */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          onClick={scrollToNext}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
-          aria-label="Scroll down"
-        >
-          <ArrowDown size={32} className="text-[rgb(var(--accent-primary))]" />
-        </motion.button>
       </div>
     </section>
   );

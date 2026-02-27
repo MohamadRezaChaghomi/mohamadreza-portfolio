@@ -35,59 +35,75 @@ export default function Contact({ language }) {
   };
 
   return (
-    <section className="py-20 px-4 bg-[rgb(var(--bg-secondary))]" id="contact">
-      <div className="container mx-auto">
+    <section className="contact-section" id="contact">
+      <div className="contact-container">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
+          className="contact-heading section-heading"
         >
           {language === 'fa' ? 'تماس با من' : 'Contact Me'}
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="contact-content">
           {/* اطلاعات تماس */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="contact-info"
           >
-            <h3 className="text-2xl font-bold mb-6">
+            <h3 className="contact-info-title">
               {language === 'fa' ? 'اطلاعات تماس' : 'Contact Information'}
             </h3>
 
-            <div className="flex items-center gap-4 p-4 glass">
-              <Mail className="w-6 h-6 text-[rgb(var(--accent-primary))]" />
-              <span>mohamad.chaghomi@gmail.com</span>
+            <div className="contact-info-item">
+              <div className="contact-info-icon">
+                <Mail size={20} />
+              </div>
+              <span className="contact-info-text">
+                mohamad.chaghomi@gmail.com
+              </span>
             </div>
 
-            <div className="flex items-center gap-4 p-4 glass">
-              <Phone className="w-6 h-6 text-[rgb(var(--accent-primary))]" />
-              <span dir="ltr">۰۹۱۰۷۴۹۲۲۰۲</span>
+            <div className="contact-info-item">
+              <div className="contact-info-icon">
+                <Phone size={20} />
+              </div>
+              <span className="contact-info-text" dir="ltr">
+                +98 910 749 2202
+              </span>
             </div>
 
-            <div className="flex items-center gap-4 p-4 glass">
-              <MapPin className="w-6 h-6 text-[rgb(var(--accent-primary))]" />
-              <span>{language === 'fa' ? 'قزوین، ایران' : 'Qazvin, Iran'}</span>
+            <div className="contact-info-item">
+              <div className="contact-info-icon">
+                <MapPin size={20} />
+              </div>
+              <span className="contact-info-text">
+                {language === 'fa' ? 'کرج، ایران' : 'Karaj, Iran'}
+              </span>
             </div>
 
-            <div className="flex items-center gap-4 p-4 glass">
-              <Github className="w-6 h-6 text-[rgb(var(--accent-primary))]" />
+            <div className="contact-info-item">
+              <div className="contact-info-icon">
+                <Github size={20} />
+              </div>
               <a
                 href="https://github.com/MohamadRezaChaghomi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline"
+                className="contact-info-link"
               >
                 github.com/MohamadRezaChaghomi
               </a>
             </div>
 
-            <div className="flex items-center gap-4 p-4 glass">
-              <Linkedin className="w-6 h-6 text-[rgb(var(--accent-primary))]" />
-              <span className="text-[rgb(var(--text-secondary))]">
+            <div className="contact-info-item">
+              <div className="contact-info-icon">
+                <Linkedin size={20} />
+              </div>
+              <span className="contact-info-text">
                 {language === 'fa' ? 'به زودی' : 'Coming Soon'}
               </span>
             </div>
@@ -96,7 +112,7 @@ export default function Contact({ language }) {
             <a
               href="/resume.pdf"
               download
-              className="flex items-center justify-center gap-2 w-full p-4 mt-6 bg-[rgb(var(--accent-primary))] text-white rounded-xl hover:bg-[rgb(var(--accent-primary))]/90 transition-colors"
+              className="download-resume-button"
             >
               <Download size={20} />
               {language === 'fa' ? 'دانلود رزومه' : 'Download Resume'}
@@ -108,60 +124,76 @@ export default function Contact({ language }) {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            className="contact-form"
           >
-            <h3 className="text-2xl font-bold mb-6">
+            <h3 className="contact-form-title">
               {language === 'fa' ? 'ارسال پیام' : 'Send Message'}
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="form-group">
+                <label htmlFor="name" className="form-label">
+                  {language === 'fa' ? 'نام و نام خانوادگی' : 'Full Name'}
+                </label>
                 <input
+                  id="name"
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   placeholder={language === 'fa' ? 'نام و نام خانوادگی' : 'Full Name'}
                   required
-                  className="w-full p-4 glass bg-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-[rgb(var(--accent-primary))]"
+                  className="form-input"
                 />
               </div>
-              <div>
+
+              <div className="form-group">
+                <label htmlFor="email" className="form-label">
+                  Email
+                </label>
                 <input
+                  id="email"
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  placeholder="Email"
+                  placeholder={language === 'fa' ? 'آدرس ایمیل' : 'Email Address'}
                   required
-                  className="w-full p-4 glass bg-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-[rgb(var(--accent-primary))]"
+                  className="form-input"
                 />
               </div>
-              <div>
+
+              <div className="form-group">
+                <label htmlFor="message" className="form-label">
+                  {language === 'fa' ? 'پیام' : 'Message'}
+                </label>
                 <textarea
-                  rows={5}
+                  id="message"
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                   placeholder={language === 'fa' ? 'پیام شما' : 'Your Message'}
                   required
-                  className="w-full p-4 glass bg-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-[rgb(var(--accent-primary))]"
+                  className="form-textarea"
                 />
               </div>
+
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full p-4 bg-[rgb(var(--accent-primary))] text-white rounded-xl hover:bg-[rgb(var(--accent-primary))]/90 transition-colors disabled:opacity-50"
+                className="form-submit-button"
               >
                 {status === 'loading'
                   ? (language === 'fa' ? 'در حال ارسال...' : 'Sending...')
                   : (language === 'fa' ? 'ارسال پیام' : 'Send Message')}
               </button>
+
               {status === 'success' && (
-                <p className="text-green-500 text-center">
+                <div className="form-status-message form-status-success">
                   {language === 'fa' ? 'پیام شما با موفقیت ارسال شد' : 'Message sent successfully'}
-                </p>
+                </div>
               )}
               {status === 'error' && (
-                <p className="text-red-500 text-center">
+                <div className="form-status-message form-status-error">
                   {language === 'fa' ? 'خطا در ارسال پیام' : 'Error sending message'}
-                </p>
+                </div>
               )}
             </form>
           </motion.div>
