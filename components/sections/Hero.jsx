@@ -29,8 +29,17 @@ export default function Hero({ language }) {
           transition={{ duration: 0.8 }}
         >
           <h1 className="hero-title">
-            <span className="hero-title-primary">محمدرضا</span>
-            <span className="hero-title-secondary"> چاقمی</span>
+            {language === 'fa' ? (
+              <>
+                <span className="hero-title-primary">محمدرضا</span>
+                <span className="hero-title-secondary"> چاقمی</span>
+              </>
+            ) : (
+              <>
+                <span className="hero-title-primary">Mohammad</span>
+                <span className="hero-title-secondary"> Reza</span>
+              </>
+            )}
           </h1>
 
           <div className="hero-subtitle">

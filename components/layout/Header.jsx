@@ -22,12 +22,17 @@ export default function Header() {
 
   if (!mounted) return null;
 
-  const navItems = [
+  let navItems = [
     { href: `/${lang}`, key: 'Home' },
     { href: `/${lang}/projects`, key: 'Projects' },
     { href: `/${lang}/about`, key: 'About' },
     { href: `/${lang}/contact`, key: 'Contact' },
   ];
+
+  // reverse order for right-to-left layout
+  if (lang === 'fa') {
+    navItems = [...navItems].reverse();
+  }
 
   const toggleLanguage = () => {
     const newLang = lang === 'fa' ? 'en' : 'fa';

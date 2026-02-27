@@ -27,16 +27,16 @@ export default async function ProjectDetailPage({ params }) {
         </div>
 
         {/* Hero Image */}
-        <div className="project-detail-image mb-12">
+        <div className="project-detail-image">
           <img
             src={project.imageUrl}
             alt={project.title[lang]}
-            className="w-full h-full object-cover"
+            className="project-detail-img"
           />
         </div>
 
         {/* Header with Title and Meta */}
-        <div className="mb-12">
+        <div className="project-header-section">
           <h1 className="project-detail-title">
             {project.title[lang]}
           </h1>

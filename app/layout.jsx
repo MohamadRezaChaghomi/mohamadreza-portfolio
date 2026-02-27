@@ -16,18 +16,18 @@ const vazir = Vazirmatn({
 });
 
 export const metadata = {
-  title: "محمدرضا چاقمی - توسعه دهنده فرانت‌اند",
-  description: "پورتفولیوی محمدرضا چاقمی، توسعه‌دهنده فرانت‌اند با تخصص در React و Next.js",
-  keywords: "فرانت‌اند, React, Next.js, توسعه‌دهنده, پورتفولیو",
-  authors: [{ name: "محمدرضا چاقمی" }],
+  title: "Mohammad Reza Chaghomi - Frontend Developer",
+  description: "Portfolio of Mohammad Reza Chaghomi, a front-end developer specializing in React and Next.js",
+  keywords: "frontend, React, Next.js, developer, portfolio",
+  authors: [{ name: "Mohammad Reza Chaghomi" }],
   icons: {
     icon: "/favicon.svg",
     apple: "/favicon.svg",
   },
   metadataBase: new URL("https://mohamadreza-portfolio.vercel.app"),
   openGraph: {
-    title: "محمدرضا چاقمی - توسعه‌دهنده فرانت‌اند",
-    description: "پورتفولیوی محمدرضا چاقمی",
+    title: "Mohammad Reza Chaghomi - Frontend Developer",
+    description: "Portfolio of Mohammad Reza Chaghomi",
     url: "https://mohamadreza-portfolio.vercel.app",
     siteName: "MRCh Portfolio",
     images: [
@@ -37,10 +37,12 @@ export const metadata = {
         height: 600,
       },
     ],
-    locale: "fa_IR",
+    locale: "en_US",
     type: "website",
   },
 };
+
+export const viewport = "width=device-width, initial-scale=1.0, maximum-scale=5.0";
 
 export default function RootLayout({ children }) {
   return (

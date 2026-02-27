@@ -83,12 +83,3 @@ export default function Background3D() {
     </div>
   );
 }
-export default function Background3D() {
-  return (
-    <div className="absolute inset-0 -z-10">
-      <Canvas camera={{ position: [0, 0, 1] }}>
-        <ParticleField />
-      </Canvas>
-    </div>
-  );
-}

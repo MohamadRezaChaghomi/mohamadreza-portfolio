@@ -61,6 +61,7 @@
 
 .skill-card {
   background: rgba(var(--glass-bg));
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(var(--glass-border));
   border-radius: 1rem;
@@ -92,9 +93,12 @@
 }
 
 .skill-card:hover {
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-  transform: translateY(-8px) scale(1.05);
+  box-shadow: 
+    0 16px 40px rgba(var(--accent-primary), 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-12px) scale(1.08);
   border-color: rgb(var(--accent-primary));
+  background: rgba(var(--accent-primary), 0.05);
 }
 
 .skill-card:hover::before {

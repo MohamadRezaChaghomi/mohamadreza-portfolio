@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MohamadReza's Portfolio
 
-## Getting Started
+This repository contains the source code for a **bilingual personal portfolio website** built with Next.js. It showcases projects, skills, experience, and contact information in both Persian (فارسی) and English. The design emphasizes clean visuals, smooth interactions, and a professional yet creative 3D hero background.
 
-First, run the development server:
+## 🚀 Key Features
+
+- **Dual language support** (English & Persian) with automatic RTL adjustments.
+- **Responsive layout** optimized for mobile, tablet, and desktop.
+- **Light/Dark theme toggle** powered by `next-themes`.
+- **Animated 3D background** on the hero section using React Three Fiber & Three.js.
+- **Custom modular CSS**—each section has its own stylesheet, avoiding Tailwind utility clutter.
+- **Animated scroll and element reveals** via Framer Motion.
+- **Project showcase** with detail pages generated from a constant file.
+- **Contact form** wired to a MongoDB backend (schema ready, implementation skeleton included).
+
+## 🧩 Tech Stack
+
+- **Next.js 16.1.6** (App Router + Turbopack)
+- **React 18** & **JSX**
+- **React Three Fiber** & **three.js** for 3D visuals
+- **Framer Motion** for animation
+- **next-intl** for internationalization
+- **next-themes** for theme management
+- **MongoDB** & **Mongoose** (for contact API)
+- **Lucide React** icons
+
+## 🗂️ Project Structure
+
+```text
+app/                # Pages and layout for the Next.js App Router
+components/         # Reusable UI components and section-specific widgets
+styles/             # Pure CSS files organized by feature/section
+lib/                # Constants, MongoDB client, models, utilities
+public/             # Static assets (images, icons, project demos)
+messages/           # Localization JSON files (en.json, fa.json)
+```
+
+Each major section (hero, about, projects, contact, etc.) has a dedicated CSS file under `styles/` for easier maintenance and modularity.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js 18 or newer
+- npm, yarn, or pnpm
+
+### Installation
+
+```bash
+git clone <repository-url>
+cd mohamadreza-portfolio
+npm install
+# or yarn install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# or yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Navigate to `/en` or `/fa` to switch languages.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+Deployable to any platform that supports Next.js (Vercel, Netlify, etc.).
 
-To learn more about Next.js, take a look at the following resources:
+## ✍️ Customization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Content & translations**: modify `messages/en.json` and `messages/fa.json`.
+- **Projects list**: edit `lib/constants/projects.js`; the UI updates automatically.
+- **Styling**: adjust CSS files in `styles/` or add new ones for additional sections.
+- **Contact backend**: see `app/api/contact/route.js` and `lib/mongodb/models/Message.js` for MongoDB integration.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+It’s easy to drop in new projects, change text, or swap assets.
 
-## Deploy on Vercel
+## 💡 Styling Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project avoids Tailwind `@apply` rules and instead uses hand-crafted CSS with:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- CSS custom properties for theme colors and spacing
+- Keyframe animations (bounce, slide-shine, fade-in, etc.)
+- Glassmorphism and neon/glow effects for visual polish
+- `[dir="rtl"]` selectors for right-to-left support in Persian
+
+Global styles are defined in `styles/globals.css` and imported by the root layout.
+
+## 📦 Dependencies
+
+Refer to `package.json` for the exact versions. Key dependencies include:
+
+```json
+"framer-motion": "^<version>",
+"lucide-react": "^<version>",
+"next": "16.1.6",
+"next-intl": "^<version>",
+"next-themes": "^<version>",
+"react-three-fiber": "^<version>",
+"three": "^<version>",
+"mongodb": "^<version>",
+"mongoose": "^<version>"
+```
+
+## 📄 License
+
+This project is released under the [MIT License](LICENSE).
+
+## 🙌 Contributions & Contact
+
+Feel free to fork, improve, or open issues. For direct feedback, use the site's contact form or email Me (address contained in the constants file).
+
+---
+
+Thanks for exploring the portfolio! 🧑‍💻🚀
