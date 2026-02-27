@@ -8,6 +8,7 @@ import "@/styles/about.css";
 import "@/styles/contact.css";
 import "@/styles/components.css";
 import "@/styles/project-detail.css";
+import "@/styles/error.css";
 
 const vazir = Vazirmatn({
   variable: "--font-vazirmatn",

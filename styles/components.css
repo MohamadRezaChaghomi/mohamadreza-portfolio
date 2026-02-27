@@ -58,8 +58,9 @@
 
 .header-nav {
   display: none;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
@@ -70,7 +71,8 @@
 
 [dir="rtl"] .header-nav {
   flex-direction: row-reverse;
-  justify-content: flex-end;
+  justify-content: center;
+  gap: 2.5rem;
 }
 
 .nav-link {
@@ -80,10 +82,7 @@
   font-weight: 500;
   position: relative;
   transition: color 0.3s ease;
-}
-
-[dir="rtl"] .header-logo {
-  margin-left: auto;
+  white-space: nowrap;
 }
 
 .nav-link::after {
@@ -95,6 +94,11 @@
   height: 2px;
   background: linear-gradient(135deg, rgb(var(--accent-primary)), rgb(var(--accent-secondary)));
   transition: width 0.3s ease;
+}
+
+[dir="rtl"] .nav-link::after {
+  left: auto;
+  right: 0;
 }
 
 .nav-link:hover {
