@@ -108,9 +108,9 @@ export default function Contact({ language }) {
               </span>
             </div>
 
-            {/* دکمه دانلود رزومه */}
+            {/* دکمه دانلود رزومه - انتخاب فایل بر اساس زبان */}
             <a
-              href="/resume.pdf"
+              href={language === 'fa' ? '/resume-fa.pdf' : '/resume-en.pdf'}
               download
               className="download-resume-button"
             >

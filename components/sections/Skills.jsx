@@ -4,9 +4,11 @@ import { motion } from 'framer-motion';
 import {
   SiReact, SiNextdotjs, SiTypescript, SiJavascript,
   SiTailwindcss, SiBootstrap, SiSass, SiMongodb,
-  SiGit, SiGithub, SiGitlab, SiNpm, SiFigma
+  SiGit, SiGithub, SiGitlab, SiNpm, SiFigma,
+  SiNodedotjs, SiExpress, SiMysql, SiSocketdotio  // جدید
 } from 'react-icons/si';
-import { FaJava, FaCuttlefish } from 'react-icons/fa';
+import { FaJava, FaCuttlefish, FaRegFileCode } from 'react-icons/fa';
+import { MdInstallMobile } from 'react-icons/md';   // برای PWA
 
 const skills = [
   { name: 'React', icon: SiReact, color: '#61DAFB' },
@@ -24,6 +26,13 @@ const skills = [
   { name: 'Java', icon: FaJava, color: '#007396' },
   { name: 'C', icon: FaCuttlefish, color: '#A8B9CC' },
   { name: 'Figma', icon: SiFigma, color: '#F24E1E' },
+  // ========== مهارت‌های جدید ==========
+  { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+  { name: 'Express.js', icon: SiExpress, color: '#000000' },
+  { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
+  { name: 'WebSocket', icon: SiSocketdotio, color: '#010101' }, // آیکون Socket.IO به عنوان نماینده WebSocket
+  { name: 'PWA', icon: MdInstallMobile, color: '#5A0FC8' },
+  { name: 'Regex', icon: FaRegFileCode, color: '#E34F26' },
 ];
 
 export default function Skills({ language }) {
